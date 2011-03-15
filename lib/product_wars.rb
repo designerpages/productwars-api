@@ -1,9 +1,9 @@
 require 'httparty'
 require 'hashie'
 
-require 'client'
-require 'errors'
-require 'response'
+require 'product_wars/client'
+require 'product_wars/errors'
+require 'product_wars/response'
 
 module ProductWars
   def self.method_missing(method, *args, &block)
@@ -15,13 +15,3 @@ module ProductWars
     return Client.respond_to?(method) || super
   end
 end
-#@leaders = ProductWars::API.leaders(war_id)
-#
-#[ProductWars::Leaders]
-#
-#@leaders.first.rank
-#
-#@response = ProductWars.get_leaders(war_id)
-
-
-

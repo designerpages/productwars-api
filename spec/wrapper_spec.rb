@@ -8,9 +8,9 @@ describe 'ProductWars' do
     context "successful request" do
       use_vcr_cassette
 
-      it "should retrieve a ProductWars::Response" do
+      it "should retrieve a ProductWars::Product" do
         response = ProductWars.product(42067)
-        response.class.should == ProductWars::Response
+        response.class.should == ProductWars::Product
       end
 
       it "the reponse should contain the keys specified in the API docs" do 
@@ -62,11 +62,11 @@ describe 'ProductWars' do
         wars_array.class.should == Array
       end
 
-      it "should retrieve an Array containing ProductWars::Response objects" do
+      it "should retrieve an Array containing ProductWars::War objects" do
         wars_array = ProductWars.wars_containing_product(42067)
 
         for h in wars_array do
-          h.class.should == ProductWars::Response
+          h.class.should == ProductWars::War
         end
       end
 
@@ -112,11 +112,11 @@ describe 'ProductWars' do
         wars_array.class.should == Array
       end
 
-      it "should retrieve an Array containing ProductWars::Response objects" do
+      it "should retrieve an Array containing ProductWars::War objects" do
         wars_array = ProductWars.all_wars
 
         for h in wars_array do
-          h.class.should == ProductWars::Response
+          h.class.should == ProductWars::War
         end
       end
 
@@ -158,9 +158,9 @@ describe 'ProductWars' do
     context "successful request" do
       use_vcr_cassette
 
-      it "should retrieve a ProductWars::Response" do
+      it "should retrieve a ProductWars::Stats" do
         response = ProductWars.product_stats(42067)
-        response.class.should == ProductWars::Response
+        response.class.should == ProductWars::Stats
       end
 
       it "the reponse should contain the keys specified in the API docs" do 
@@ -198,9 +198,9 @@ describe 'ProductWars' do
     context "successful request" do
       use_vcr_cassette
 
-      it "should retrieve a ProductWars::Response" do
+      it "should retrieve a ProductWars::War" do
         response = ProductWars.war(1)
-        response.class.should == ProductWars::Response
+        response.class.should == ProductWars::War
       end
 
       it "the reponse should contain the keys specified in the API docs" do 
@@ -243,11 +243,11 @@ describe 'ProductWars' do
         products_array.class.should == Array
       end
 
-      it "should retrieve an Array containing ProductWars::Response objects" do
+      it "should retrieve an Array containing ProductWars::Product objects" do
         products_array = ProductWars.products_in_war(1)
 
         for h in products_array do
-          h.class.should == ProductWars::Response
+          h.class.should == ProductWars::Product
         end
       end
 
@@ -299,11 +299,11 @@ describe 'ProductWars' do
         products_array.class.should == Array
       end
 
-      it "should retrieve an Array containing ProductWars::Response objects" do
+      it "should retrieve an Array containing ProductWars::Product objects" do
         products_array = ProductWars.global_leaders
 
         for h in products_array do
-          h.class.should == ProductWars::Response
+          h.class.should == ProductWars::Product
         end
       end
 
@@ -356,11 +356,11 @@ describe 'ProductWars' do
         products_array.class.should == Array
       end
 
-      it "should retrieve an Array containing ProductWars::Response objects" do
+      it "should retrieve an Array containing ProductWars::Product objects" do
         products_array = ProductWars.leaders_in_war(1)
 
         for h in products_array do
-          h.class.should == ProductWars::Response
+          h.class.should == ProductWars::Product
         end
       end
 
