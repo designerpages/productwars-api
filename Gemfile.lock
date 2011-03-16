@@ -13,7 +13,6 @@ GEM
       git (>= 1.2.5)
       rake
     rake (0.8.7)
-    rcov (0.9.9)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
       rspec-expectations (~> 2.5.0)
@@ -22,7 +21,6 @@ GEM
     rspec-expectations (2.5.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.5.0)
-    shoulda (2.11.3)
     vcr (1.7.0)
 
 PLATFORMS
@@ -34,7 +32,5 @@ DEPENDENCIES
   hashie (= 1.0.0)
   httparty (= 0.7.4)
   jeweler (~> 1.5.2)
-  rcov
   rspec (= 2.5.0)
-  shoulda
   vcr (= 1.7.0)
