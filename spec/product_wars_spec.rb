@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'product_wars'
-require 'errors'
 
 PRODUCT_KEYS = [
                  "active",

@@ -11,12 +11,11 @@ module ProductWars
     include HTTParty
 
     ### HTTParty Config ###
-    #@base_uri = 'www.productwars.com/api/v1'
-    base_uri 'productwars.com/api/v1'
     format :json
     #######################
 
     def self.dispatch(method, *args, &block)
+      base_uri "#{ProductWars.domain}/api/v1"
       response = self.send(method, *args, &block)
       self.handle(response)
     end
