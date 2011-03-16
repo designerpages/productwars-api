@@ -1,11 +1,5 @@
 require 'httparty'
 
-require 'errors'
-
-require 'product_wars/product'
-require 'product_wars/war'
-require 'product_wars/stats'
-
 module ProductWars
   class Client
     include HTTParty

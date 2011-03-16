@@ -1,10 +1,3 @@
-require 'httparty'
-require 'hashie'
-
-require 'product_wars/client'
-require 'product_wars/errors'
-require 'product_wars/response'
-
 module ProductWars
   def self.method_missing(method, *args, &block)
     return super unless Client.respond_to?(method)
