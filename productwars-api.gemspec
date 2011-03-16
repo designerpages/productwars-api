@@ -49,7 +49,7 @@ Gem::Specification.new do |s|
     "spec/product_wars_spec.rb",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/spencer1248/product-wars-ruby-api-wrapper}
+  s.homepage = %q{http://github.com/designerpages/productwars-api}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.5.2}
