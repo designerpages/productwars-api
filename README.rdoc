@@ -14,6 +14,6 @@ This gem wraps the Product Wars API.
 
 == Copyright
 
-Copyright (c) 2011 Spencer Rogers. See LICENSE.txt for
+Copyright (c) 2011 Designer Pages. See LICENSE.txt for
 further details.
 
