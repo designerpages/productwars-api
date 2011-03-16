@@ -12,7 +12,7 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "product-wars-api"
+  gem.name = "productwars-api"
   gem.homepage = "http://github.com/spencer1248/product-wars-ruby-api-wrapper"
   gem.license = "MIT"
   gem.summary = %Q{API wrapper for productwars.com}

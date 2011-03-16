@@ -2,13 +2,17 @@ require 'httparty'
 
 require 'errors'
 
+require 'product_wars/product'
+require 'product_wars/war'
+require 'product_wars/stats'
+
 module ProductWars
   class Client
     include HTTParty
 
     ### HTTParty Config ###
     #@base_uri = 'www.productwars.com/api/v1'
-    base_uri 'localhost:3000/api/v1'
+    base_uri 'productwars.com/api/v1'
     format :json
     #######################
 
@@ -60,18 +64,57 @@ module ProductWars
     end
 
     def self.wrap(response)
-      product_wars_info = response.parsed_response
+      info = response.parsed_response
 
-      if product_wars_info.class == Array
+      if info.class == Array
         a = []
-        for hash in product_wars_info
-          a.push(ProductWars::Response.new(hash))
+
+        for hash in info
+          a.push(new_product_wars_object(hash))
         end
 
         return a
-      elsif product_wars_info.class == Hash
-        ProductWars::Response.new(product_wars_info)
+
+      elsif info.class == Hash
+        new_product_wars_object(info)
       end
     end
+
+    def self.product_wars_type?(obj)
+      if obj.class == Array
+        obj = obj.first
+      end
+
+      if obj.nil?
+        return nil
+      end
+
+      if obj.class == Hash
+        if obj.has_key?('dp_id')
+          if obj.has_key?('win_rate')
+            ProductWars::Stats
+          else
+            ProductWars::Product
+          end
+        else
+          ProductWars::War
+        end
+      end
+    end
+
+    def self.new_product_wars_object(info)
+      type = product_wars_type?(info)
+
+      if type == ProductWars::Product
+        ProductWars::Product.new(info)
+      elsif type == ProductWars::War
+        ProductWars::War.new(info)
+      elsif type == ProductWars::Stats
+        ProductWars::Stats.new(info)
+      else
+        nil
+      end
+    end
+
   end
 end
