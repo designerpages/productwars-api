@@ -1,3 +1,5 @@
+require 'productwars/client'
+
 module ProductWars
   def self.method_missing(method, *args, &block)
     return super unless Client.respond_to?(method)

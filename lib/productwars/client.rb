@@ -1,4 +1,10 @@
 require 'httparty'
+require 'hashie'
+
+require 'productwars/errors'
+require 'productwars/product'
+require 'productwars/stats'
+require 'productwars/war'
 
 module ProductWars
   class Client
