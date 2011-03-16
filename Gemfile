@@ -9,4 +9,5 @@ group :development do
   gem "vcr", "1.7.0"
   gem "fakeweb"
   gem "rspec", "2.5.0"
+  gem "rcov", ">= 0"
 end
