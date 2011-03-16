@@ -2,6 +2,42 @@ require 'spec_helper'
 require 'product_wars'
 require 'errors'
 
+PRODUCT_KEYS = [
+                 "active",
+                 "asset_url",
+                 "created_at",
+                 "description",
+                 "dp_id",
+                 "fights",
+                 "global_rank",
+                 "image_url",
+                 "manufacturer",
+                 "name",
+                 "permalink",
+                 "updated_at",
+                 "wins"
+               ]
+
+WAR_KEYS = [ 
+            'name', 
+            'created_at', 
+            'updated_at', 
+            'id', 
+            'fights', 
+            'description', 
+            'active' 
+           ]
+
+STATS_KEYS = [
+              'dp_id',
+              'fights',
+              'global_rank',
+              'name',
+              'manufacturer',
+              'wins',
+              'win_rate'
+             ]
+
 describe 'ProductWars' do
   describe "::product" do
 
@@ -16,28 +52,12 @@ describe 'ProductWars' do
       it "the reponse should contain the keys specified in the API docs" do 
         product = ProductWars.product(42067)
 
-        product_keys = [
-                         "active",
-                         "asset_url",
-                         "created_at",
-                         "description",
-                         "dp_id",
-                         "fights",
-                         "global_rank",
-                         "image_url",
-                         "manufacturer",
-                         "name",
-                         "permalink",
-                         "updated_at",
-                         "wins"
-                       ]
-
-         for key in product_keys do
+         for key in PRODUCT_KEYS do
            product.has_key?(key).should == true
            #TODO This fails because the "id" attribute isn't accounted for.
            # This is because the dp_id takes the place of the product id in
            # all circumstances. In other words, the Product Wars app has a bug.
-           product.keys.count.should == product_keys.count
+           product.keys.count.should == PRODUCT_KEYS.count
          end
       end
     end
@@ -73,20 +93,10 @@ describe 'ProductWars' do
       it "should contain properly formatted war hashes" do
         wars_array = ProductWars.wars_containing_product(42067)
 
-        war_keys = [ 
-                'name', 
-                'created_at', 
-                'updated_at', 
-                'id', 
-                'fights', 
-                'description', 
-                'active' 
-               ]
-
         for w in wars_array
-           for key in war_keys do
+           for key in WAR_KEYS do
              w.has_key?(key).should == true
-             w.keys.count.should == war_keys.count
+             w.keys.count.should == WAR_KEYS.count
            end
         end
       end
@@ -123,20 +133,10 @@ describe 'ProductWars' do
       it "should contain properly formatted war hashes" do
         wars_array = ProductWars.all_wars
 
-        war_keys = [ 
-                'name', 
-                'created_at', 
-                'updated_at', 
-                'id', 
-                'fights', 
-                'description', 
-                'active' 
-               ]
-
         for w in wars_array
-           for key in war_keys do
+           for key in WAR_KEYS do
              w.has_key?(key).should == true
-             w.keys.count.should == war_keys.count
+             w.keys.count.should == WAR_KEYS.count
            end
         end
       end
@@ -166,19 +166,9 @@ describe 'ProductWars' do
       it "the reponse should contain the keys specified in the API docs" do 
         stats = ProductWars.product_stats(42067)
 
-        stats_keys = [
-                       'dp_id',
-                       'fights',
-                       'global_rank',
-                       'name',
-                       'manufacturer',
-                       'wins',
-                       'win_rate'
-                      ]
-
-         for key in stats_keys do
+         for key in STATS_KEYS do
            stats.has_key?(key).should == true
-           stats.keys.count.should == stats_keys.count
+           stats.keys.count.should == STATS_KEYS.count
          end
       end
     end
@@ -206,19 +196,9 @@ describe 'ProductWars' do
       it "the reponse should contain the keys specified in the API docs" do 
         war = ProductWars.war(1)
 
-        war_keys = [
-                      'name', 
-                      'created_at', 
-                      'updated_at', 
-                      'id', 
-                      'fights', 
-                      'description', 
-                      'active' 
-                   ]
-
-         for key in war_keys do
+         for key in WAR_KEYS do
            war.has_key?(key).should == true
-           war.keys.count.should == war_keys.count
+           war.keys.count.should == WAR_KEYS.count
          end
       end
     end
@@ -254,26 +234,10 @@ describe 'ProductWars' do
       it "should contain properly formatted product hashes" do
         products_array = ProductWars.products_in_war(1)
 
-        products_keys = [ 
-                         "active",
-                         "asset_url",
-                         "created_at",
-                         "description",
-                         "dp_id",
-                         "fights",
-                         "global_rank",
-                         "image_url",
-                         "manufacturer",
-                         "name",
-                         "permalink",
-                         "updated_at",
-                         "wins"
-                        ]
-
         for p in products_array
-           for key in products_keys do
+           for key in PRODUCT_KEYS do
              p.has_key?(key).should == true
-             p.keys.count.should == products_keys.count
+             p.keys.count.should == PRODUCT_KEYS.count
            end
         end
       end
@@ -310,26 +274,10 @@ describe 'ProductWars' do
       it "should contain properly formatted product hashes" do
         products_array = ProductWars.global_leaders
 
-        products_keys = [ 
-                         "active",
-                         "asset_url",
-                         "created_at",
-                         "description",
-                         "dp_id",
-                         "fights",
-                         "global_rank",
-                         "image_url",
-                         "manufacturer",
-                         "name",
-                         "permalink",
-                         "updated_at",
-                         "wins"
-                        ]
-
         for p in products_array
-           for key in products_keys do
+           for key in PRODUCT_KEYS do
              p.has_key?(key).should == true
-             p.keys.count.should == products_keys.count
+             p.keys.count.should == PRODUCT_KEYS.count
            end
         end
       end
@@ -367,26 +315,10 @@ describe 'ProductWars' do
       it "should contain properly formatted product hashes" do
         products_array = ProductWars.leaders_in_war(1)
 
-        products_keys = [ 
-                         "active",
-                         "asset_url",
-                         "created_at",
-                         "description",
-                         "dp_id",
-                         "fights",
-                         "global_rank",
-                         "image_url",
-                         "manufacturer",
-                         "name",
-                         "permalink",
-                         "updated_at",
-                         "wins"
-                        ]
-
         for p in products_array
-           for key in products_keys do
+           for key in PRODUCT_KEYS do
              p.has_key?(key).should == true
-             p.keys.count.should == products_keys.count
+             p.keys.count.should == PRODUCT_KEYS.count
            end
         end
       end
