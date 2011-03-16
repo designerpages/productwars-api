@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
     "lib/productwars/response.rb",
     "lib/productwars/stats.rb",
     "lib/productwars/war.rb",
+    "productwars-api.gemspec",
     "spec/cassettes/ProductWars/_all_wars/successful_wars_index_request.yml",
     "spec/cassettes/ProductWars/_global_leaders/successful_products_index_request.yml",
     "spec/cassettes/ProductWars/_leaders_in_war/successful_request.yml",
