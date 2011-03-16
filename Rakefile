@@ -12,11 +12,11 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "product-wars-ruby-api-wrapper"
+  gem.name = "product-wars-api"
   gem.homepage = "http://github.com/spencer1248/product-wars-ruby-api-wrapper"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{API wrapper for productwars.com}
+  gem.description = %Q{This gem provides object-like functionality for retrieving and manipulating data from the Product Wars API}
   gem.email = "spencer@designerpages.com"
   gem.authors = ["Spencer Rogers"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,

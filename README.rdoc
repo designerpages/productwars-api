@@ -1,6 +1,6 @@
 = product-wars-ruby-api-wrapper
 
-Description goes here.
+This gem wraps the Product Wars API.
 
 == Contributing to product-wars-ruby-api-wrapper
  
