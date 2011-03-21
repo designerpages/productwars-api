@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{productwars-api}
-  s.version = "0.1.2"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Spencer Rogers"]
-  s.date = %q{2011-03-16}
+  s.date = %q{2011-03-21}
   s.description = %q{This gem provides object-like functionality for retrieving and manipulating data from the Product Wars API}
   s.email = %q{spencer@designerpages.com}
   s.extra_rdoc_files = [
@@ -32,19 +32,24 @@ Gem::Specification.new do |s|
     "lib/productwars/stats.rb",
     "lib/productwars/war.rb",
     "productwars-api.gemspec",
+    "spec/cassettes/ProductWars/_all_wars/successful_request_with_page_parameters.yml",
     "spec/cassettes/ProductWars/_all_wars/successful_wars_index_request.yml",
     "spec/cassettes/ProductWars/_global_leaders/successful_products_index_request.yml",
+    "spec/cassettes/ProductWars/_global_leaders/successful_request_with_page_parameters.yml",
     "spec/cassettes/ProductWars/_leaders_in_war/successful_request.yml",
+    "spec/cassettes/ProductWars/_leaders_in_war/successful_request_with_page_parameters.yml",
     "spec/cassettes/ProductWars/_leaders_in_war/unsuccessful_request.yml",
     "spec/cassettes/ProductWars/_product/successful_request.yml",
     "spec/cassettes/ProductWars/_product/unsuccessful_request.yml",
     "spec/cassettes/ProductWars/_product_stats/successful_request.yml",
     "spec/cassettes/ProductWars/_product_stats/unsuccessful_request.yml",
     "spec/cassettes/ProductWars/_products_in_war/successful_products_index_request.yml",
+    "spec/cassettes/ProductWars/_products_in_war/successful_request_with_page_parameters.yml",
     "spec/cassettes/ProductWars/_products_in_war/unsuccessful_request.yml",
     "spec/cassettes/ProductWars/_war/successful_request.yml",
     "spec/cassettes/ProductWars/_war/unsuccessful_request.yml",
     "spec/cassettes/ProductWars/_wars_containing_product/successful_request.yml",
+    "spec/cassettes/ProductWars/_wars_containing_product/successful_request_with_page_parameters.yml",
     "spec/cassettes/ProductWars/_wars_containing_product/unsuccessful_request.yml",
     "spec/product_wars_spec.rb",
     "spec/spec_helper.rb"
