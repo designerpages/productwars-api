@@ -71,25 +71,25 @@ describe 'ProductWars' do
     end
   end
 
-  describe "::wars_containing_product" do
+  describe ":wars_containing_product" do
     context "successful request" do
       use_vcr_cassette
 
-      it "should retrieve an Array" do
-        wars_array = ProductWars.wars_containing_product(42067)
+      it "should contain an Array" do
+        wars_array = ProductWars.wars_containing_product(42067)["wars"]
         wars_array.class.should == Array
       end
 
-      it "should retrieve an Array containing ProductWars::War objects" do
-        wars_array = ProductWars.wars_containing_product(42067)
+      it "should contain an Array containing ProductWars::War objects" do
+        wars_array = ProductWars.wars_containing_product(42067)["wars"]
 
         for h in wars_array do
           h.class.should == ProductWars::War
         end
       end
 
-      it "should contain properly formatted war hashes" do
-        wars_array = ProductWars.wars_containing_product(42067)
+      it "the array should contain properly formatted war hashes" do
+        wars_array = ProductWars.wars_containing_product(42067)["wars"]
 
         for w in wars_array
            for key in WAR_KEYS do
@@ -97,6 +97,22 @@ describe 'ProductWars' do
              w.keys.count.should == WAR_KEYS.count
            end
         end
+      end
+    end
+
+    context "successful request with page parameters" do
+      use_vcr_cassette
+
+      it "should retrieve the number of items specified by :per_page" do
+        wars_array = ProductWars.wars_containing_product(42067, {"page" => 1, "per_page" => 10})
+
+        wars_array.count.should <= 10
+        wars_array.count.should > 0
+      end
+
+      it "should return the correct next page" do
+        request = ProductWars.wars_containing_product(42067, {"page" => 2, "per_page" => 10})
+        request["next_page"].should == 3
       end
     end
 
@@ -116,12 +132,12 @@ describe 'ProductWars' do
       use_vcr_cassette
 
       it "should retrieve an Array" do
-        wars_array = ProductWars.all_wars
+        wars_array = ProductWars.all_wars["wars"]
         wars_array.class.should == Array
       end
 
       it "should retrieve an Array containing ProductWars::War objects" do
-        wars_array = ProductWars.all_wars
+        wars_array = ProductWars.all_wars["wars"]
 
         for h in wars_array do
           h.class.should == ProductWars::War
@@ -129,7 +145,7 @@ describe 'ProductWars' do
       end
 
       it "should contain properly formatted war hashes" do
-        wars_array = ProductWars.all_wars
+        wars_array = ProductWars.all_wars["wars"]
 
         for w in wars_array
            for key in WAR_KEYS do
@@ -137,6 +153,22 @@ describe 'ProductWars' do
              w.keys.count.should == WAR_KEYS.count
            end
         end
+      end
+    end
+
+    context "successful request with page parameters" do
+      use_vcr_cassette
+
+      it "should retrieve the number of items specified by :per_page" do
+        wars_array = ProductWars.all_wars({"page" => 1, "per_page" => 10})
+
+        wars_array.count.should <= 10
+        wars_array.count.should > 0
+      end
+
+      it "should return the correct next page" do
+        request = ProductWars.all_wars({"page" => 2, "per_page" => 10})
+        request["next_page"].should == 3
       end
     end
 
@@ -217,12 +249,12 @@ describe 'ProductWars' do
       use_vcr_cassette
 
       it "should retrieve an Array" do
-        products_array = ProductWars.products_in_war(1)
+        products_array = ProductWars.products_in_war(1)["products"]
         products_array.class.should == Array
       end
 
       it "should retrieve an Array containing ProductWars::Product objects" do
-        products_array = ProductWars.products_in_war(1)
+        products_array = ProductWars.products_in_war(1)["products"]
 
         for h in products_array do
           h.class.should == ProductWars::Product
@@ -230,7 +262,7 @@ describe 'ProductWars' do
       end
 
       it "should contain properly formatted product hashes" do
-        products_array = ProductWars.products_in_war(1)
+        products_array = ProductWars.products_in_war(1)["products"]
 
         for p in products_array
            for key in PRODUCT_KEYS do
@@ -238,6 +270,22 @@ describe 'ProductWars' do
              p.keys.count.should == PRODUCT_KEYS.count
            end
         end
+      end
+    end
+
+    context "successful request with page parameters" do
+      use_vcr_cassette
+
+      it "should retrieve the number of items specified by :per_page" do
+        wars_array = ProductWars.products_in_war(1, {"page" => 1, "per_page" => 10})
+
+        wars_array.count.should <= 10
+        wars_array.count.should > 0
+      end
+
+      it "should return the correct next page" do
+        request = ProductWars.products_in_war(1, {"page" => 2, "per_page" => 10})
+        request["next_page"].should == 3
       end
     end
 
@@ -257,12 +305,12 @@ describe 'ProductWars' do
       use_vcr_cassette
 
       it "should retrieve an Array" do
-        products_array = ProductWars.global_leaders
+        products_array = ProductWars.global_leaders["products"]
         products_array.class.should == Array
       end
 
       it "should retrieve an Array containing ProductWars::Product objects" do
-        products_array = ProductWars.global_leaders
+        products_array = ProductWars.global_leaders["products"]
 
         for h in products_array do
           h.class.should == ProductWars::Product
@@ -270,7 +318,7 @@ describe 'ProductWars' do
       end
 
       it "should contain properly formatted product hashes" do
-        products_array = ProductWars.global_leaders
+        products_array = ProductWars.global_leaders["products"]
 
         for p in products_array
            for key in PRODUCT_KEYS do
@@ -278,6 +326,22 @@ describe 'ProductWars' do
              p.keys.count.should == PRODUCT_KEYS.count
            end
         end
+      end
+    end
+
+    context "successful request with page parameters" do
+      use_vcr_cassette
+
+      it "should retrieve the number of items specified by :per_page" do
+        wars_array = ProductWars.global_leaders({"page" => 1, "per_page" => 10})
+
+        wars_array.count.should <= 10
+        wars_array.count.should > 0
+      end
+
+      it "should return the correct next page" do
+        request = ProductWars.global_leaders({"page" => 2, "per_page" => 10})
+        request["next_page"].should == 3
       end
     end
 
@@ -298,12 +362,12 @@ describe 'ProductWars' do
       use_vcr_cassette
 
       it "should retrieve an Array" do
-        products_array = ProductWars.leaders_in_war(1)
+        products_array = ProductWars.leaders_in_war(1)["products"]
         products_array.class.should == Array
       end
 
       it "should retrieve an Array containing ProductWars::Product objects" do
-        products_array = ProductWars.leaders_in_war(1)
+        products_array = ProductWars.leaders_in_war(1)["products"]
 
         for h in products_array do
           h.class.should == ProductWars::Product
@@ -311,7 +375,7 @@ describe 'ProductWars' do
       end
 
       it "should contain properly formatted product hashes" do
-        products_array = ProductWars.leaders_in_war(1)
+        products_array = ProductWars.leaders_in_war(1)["products"]
 
         for p in products_array
            for key in PRODUCT_KEYS do
@@ -319,6 +383,22 @@ describe 'ProductWars' do
              p.keys.count.should == PRODUCT_KEYS.count
            end
         end
+      end
+    end
+
+    context "successful request with page parameters" do
+      use_vcr_cassette
+
+      it "should retrieve the number of items specified by :per_page" do
+        wars_array = ProductWars.leaders_in_war(1, {"page" => 1, "per_page" => 10})
+
+        wars_array.count.should <= 10
+        wars_array.count.should > 0
+      end
+
+      it "should return the correct next page" do
+        request = ProductWars.leaders_in_war(1, {"page" => 2, "per_page" => 10})
+        request["next_page"].should == 3
       end
     end
 
